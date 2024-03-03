@@ -10,7 +10,7 @@ import (
 
 var is_roman bool = false
 
-var operators = [4]string{"+", "-", "*", "/"}
+var operators = [10]string{"+", "-", "*", "/", ")", "(", "%", "^", "!", "="}
 var romes = [7]string{"M", "C", "D", "X", "L", "V", "I"}
 
 func extra(z_in string, devider string) int {
@@ -61,10 +61,7 @@ func extra(z_in string, devider string) int {
 		out = x_num / y_num
 
 	}
-	if is_roman == true && out < 1 {
-		fmt.Println("Неть. Римские числа могут быть только положительными")
-		os.Exit(0)
-	}
+
 	return out
 }
 
@@ -130,7 +127,8 @@ func from_roman(rom string) int {
 }
 
 func main() {
-
+	fmt.Println("Привет! Это скромный калькулятор, который умеет складывать, вычитать, умножать и делить целые числа от 1 до 10 в арабской и римской системах счисления.\n",
+		"Чтобы начать, напиши здесь выражение в формате 'x+y' и нажми Enter. ")
 	for {
 		devider := "None"
 		count := 0
@@ -159,7 +157,11 @@ func main() {
 		if is_roman == false {
 			fmt.Println(for_print)
 		} else {
-			fmt.Println(for_print_rom)
+			if is_roman == true && for_print < 1 {
+				fmt.Println("Неть. Римские числа могут быть только положительными")
+			} else {
+				fmt.Println(for_print_rom)
+			}
 		}
 
 	}
