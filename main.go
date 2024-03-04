@@ -37,12 +37,10 @@ func extra(z_in string, devider string) int {
 		x_num, _ = strconv.Atoi(x)
 		y_num, _ = strconv.Atoi(y)
 		if 1 > x_num || 1 > y_num || 10 < x_num || 10 < y_num {
-			fmt.Println("Неть. Операнд должен быть от 1 до 10 включительно и быть целым числом")
-			os.Exit(0)
+			panic(fmt.Sprintln("Неть. Операнд должен быть от 1 до 10 включительно и быть целым числом"))
 		}
 	} else if is_x_roman != is_y_roman {
-		fmt.Println("Неть. Оба операнда должны быть одной системы счисления")
-		os.Exit(0)
+		panic(fmt.Sprintln("Неть. Оба операнда должны быть одной системы счисления"))
 	} else {
 		is_roman = true
 		x_num = from_roman((x))
@@ -140,16 +138,14 @@ func main() {
 				devider = i
 				count += 1
 				if count > 1 || strings.Count(z, i) > 1 {
-					fmt.Println("Неть, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
-					os.Exit(0)
+					panic(fmt.Sprintf("Неть, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)"))
 				}
 			}
 
 		}
 
 		if devider == "None" {
-			fmt.Println("Неть, вы не указали ни один из операторов (+, -, /, *)")
-			os.Exit(0)
+			panic(fmt.Sprintf("Неть, вы не указали ни один из операторов (+, -, /, *)"))
 		}
 
 		for_print := extra(z, devider)
@@ -158,7 +154,7 @@ func main() {
 			fmt.Println(for_print)
 		} else {
 			if is_roman == true && for_print < 1 {
-				fmt.Println("Неть. Римские числа могут быть только положительными")
+				panic(fmt.Sprintf("Неть. Римские числа могут быть только положительными"))
 			} else {
 				fmt.Println(for_print_rom)
 			}
