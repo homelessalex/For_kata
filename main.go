@@ -116,8 +116,7 @@ func from_roman(rom string) int {
 		}
 	}
 	if arab == 0 {
-		fmt.Println("Неть. Операнд должен быть от 1 до 10 включительно")
-		os.Exit(0)
+		panic(fmt.Sprintln("Неть. Операнд должен быть от 1 до 10 включительно"))
 
 	}
 
